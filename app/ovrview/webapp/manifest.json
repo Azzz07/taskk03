@@ -132,7 +132,7 @@
           "settings": {
             "title": "pictureee",
             "subTitle": "pics",
-            "listFlavor": "carousel",
+            "listFlavor": "standard",
             "entitySet": "LiabilityBasedOnAmount_1",
             "sortBy": "id",
             "sortOrder": "ascending",
