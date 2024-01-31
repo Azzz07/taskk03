@@ -1,5 +1,5 @@
 namespace demo.aggregate;
-// using { Currency, cuid } from '@sap/cds/common';
+// using { Currency, cuid } from '@sap/cds/common'; ok
  
 // entity Expenses : cuid {
 //     category: String @title: 'Category';
