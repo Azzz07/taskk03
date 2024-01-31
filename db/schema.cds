@@ -8,6 +8,10 @@ namespace demo.aggregate;
 //     postingDate: DateTime @title: 'Posting Date'
 // }
 
+
+
+
+
 // @Aggregation.ApplySupported.PropertyRestrictions: true
 // view ExpensesAnalytics as select from Expenses {
 //   key ID,
