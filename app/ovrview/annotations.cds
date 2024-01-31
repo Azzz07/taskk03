@@ -1,0 +1,1 @@
+using MS as service from '../../srv/service';

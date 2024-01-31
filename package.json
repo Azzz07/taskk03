@@ -1,0 +1,40 @@
+{
+    "name": "task03",
+    "version": "1.0.0",
+    "description": "A simple CAP project.",
+    "repository": "<Add your repository here>",
+    "license": "UNLICENSED",
+    "private": true,
+    "dependencies": {
+        "@sap/cds": "^7",
+        "@sap/cds-hana": "^2",
+        "express": "^4"
+    },
+    "devDependencies": {
+        "@cap-js/sqlite": "^1",
+        "@sap/cds-dk": "^7",
+        "@sap/ux-specification": "^1.120.2",
+        "rimraf": "^3.0.2"
+    },
+    "scripts": {
+        "start": "cds-serve",
+        "watch-ovrview": "cds watch --open ovrview/webapp/index.html?sap-ui-xx-viewCache=false",
+        "undeploy": "cf undeploy task03 --delete-services --delete-service-keys --delete-service-brokers",
+        "build": "rimraf resources mta_archives && mbt build --mtar archive",
+        "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
+        "watch-aaaa1": "cds watch --open aaaa1/webapp/index.html?sap-ui-xx-viewCache=false",
+        "watch-list": "cds watch --open list/webapp/index.html?sap-ui-xx-viewCache=false",
+        "watch-list1": "cds watch --open list1/webapp/index.html?sap-ui-xx-viewCache=false"
+    },
+    "sapux": [
+        "app/ovrview",
+        "app/aaaa1",
+        "app/list",
+        "app/list1"
+    ],
+    "cds": {
+        "requires": {
+            "db": "hana"
+        }
+    }
+}

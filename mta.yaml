@@ -1,0 +1,129 @@
+_schema-version: "3.1"
+ID: task03
+description: A simple CAP project.
+version: 1.0.0
+modules:
+- name: task03-srv
+  type: nodejs
+  path: gen/srv
+  requires:
+  - name: task03-db
+  provides:
+  - name: srv-api
+    properties:
+      srv-url: ${default-url}
+  parameters:
+    buildpack: nodejs_buildpack
+  build-parameters:
+    builder: npm
+- name: task03-app-content
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: task03-repo-host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - ovrview.zip
+      name: ovrview
+      target-path: resources/
+    - artifacts:
+      - aaaa1.zip
+      name: aaaa1
+      target-path: resources/
+    - artifacts:
+      - list.zip
+      name: list
+      target-path: resources/
+    - artifacts:
+      - list1.zip
+      name: list1
+      target-path: resources/
+- name: ovrview
+  type: html5
+  path: app/ovrview
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: aaaa1
+  type: html5
+  path: app/aaaa1
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: task03-db-deployer
+  type: hdb
+  path: gen/db
+  requires:
+  - name: task03-db
+  parameters:
+    buildpack: nodejs_buildpack
+- name: list
+  type: html5
+  path: app/list
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: list1
+  type: html5
+  path: app/list1
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+resources:
+- name: task03-repo-host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: task03-html5-srv
+    service-plan: app-host
+- name: task03-destination-service
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      HTML5Runtime_enabled: false
+      init_data:
+        instance:
+          destinations:
+          - Authentication: NoAuthentication
+            Name: ui5
+            ProxyType: Internet
+            Type: HTTP
+            URL: https://ui5.sap.com
+          existing_destinations_policy: update
+      version: 1.0.0
+    service: destination
+    service-name: task03-destination-service
+    service-plan: lite
+- name: task03-db
+  type: com.sap.xs.hdi-container
+  parameters:
+    service: hana
+    service-plan: hdi-shared
+parameters:
+  deploy_mode: html5-repo
+  enable-parallel-deployments: true
+build-parameters:
+  before-all:
+  - builder: custom
+    commands:
+    - npx cds build --production
