@@ -1,6 +1,6 @@
 namespace demo.aggregate;
 // using { Currency, cuid } from '@sap/cds/common'; ok
- 
+//  hi
 // entity Expenses : cuid {
 //     category: String @title: 'Category';
 //     amount: Decimal(9,2) @title: 'Amount';
