@@ -13,6 +13,7 @@ entity LiabilityBasedOnAmount_1 as projection on my.LiabilityBasedOnAmount_1 ;
             Measure: chartMeasure,
             Role   : #Axis1
         }],
+        
         Dimensions         : [chartDimension],
         DimensionAttributes: [{
             Dimension: chartDimension,
