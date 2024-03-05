@@ -8,7 +8,9 @@
     "dependencies": {
         "@sap/cds": "^7",
         "@sap/cds-hana": "^2",
-        "express": "^4"
+        "@sap/xssec": "^3.6.1",
+        "express": "^4",
+        "passport": "^0.7.0"
     },
     "devDependencies": {
         "@cap-js/sqlite": "^1",
@@ -34,7 +36,11 @@
     ],
     "cds": {
         "requires": {
-            "db": "hana"
+            "db": "hana",
+            "auth":"dummy"
+        },
+        "fiori": {
+            "bypass_draft": true
         }
     }
 }

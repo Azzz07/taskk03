@@ -1,0 +1,131 @@
+{
+    "_version": "1.59.0",
+    "sap.app": {
+        "id": "aaaa1",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:fpm",
+            "version": "1.12.2",
+            "toolsId": "f97ff2a2-afbf-4353-b1e2-dc98631baa1f"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "odata/v4/ms/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "odataVersion": "4.0"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.120.4",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.ushell": {},
+                "sap.fe.templates": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "aaaa1.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "synchronizationMode": "None",
+                    "operationMode": "Server",
+                    "autoExpandSelect": true,
+                    "earlyRequests": true
+                }
+            },
+            "@i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
+            }
+        },
+        "resources": {
+            "css": []
+        },
+        "routing": {
+            "routes": [
+                {
+                    "name": "LiabilityBasedOnAmount_1Main",
+                    "pattern": ":?query:",
+                    "target": "LiabilityBasedOnAmount_1Main"
+                },
+                {
+                    "name": "LiabilityBasedOnAmount_1ObjectPage",
+                    "pattern": "LiabilityBasedOnAmount_1({LiabilityBasedOnAmount_1Key}):?query:",
+                    "target": "LiabilityBasedOnAmount_1ObjectPage"
+                }
+            ],
+            "targets": {
+                "LiabilityBasedOnAmount_1Main": {
+                    "type": "Component",
+                    "id": "LiabilityBasedOnAmount_1Main",
+                    "name": "sap.fe.core.fpm",
+                    "options": {
+                        "settings": {
+                            "viewName": "aaaa1.ext.main.Main",
+                            "contextPath": "/LiabilityBasedOnAmount_1",
+                            "navigation": {
+                                "LiabilityBasedOnAmount_1": {
+                                    "detail": {
+                                        "route": "LiabilityBasedOnAmount_1ObjectPage"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "LiabilityBasedOnAmount_1ObjectPage": {
+                    "type": "Component",
+                    "id": "LiabilityBasedOnAmount_1ObjectPage",
+                    "name": "sap.fe.templates.ObjectPage",
+                    "options": {
+                        "settings": {
+                            "navigation": {},
+                            "contextPath": "/LiabilityBasedOnAmount_1"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

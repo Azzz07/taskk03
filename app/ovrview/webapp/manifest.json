@@ -132,15 +132,11 @@
           "settings": {
             "title": "pictureee",
             "subTitle": "pics",
-            "listFlavor": "standard",
+            "listFlavor": "carousel",
             "entitySet": "LiabilityBasedOnAmount_1",
             "sortBy": "id",
             "sortOrder": "ascending",
             "headerAnnotationPath": "com.sap.vocabularies.UI.v1.HeaderInfo#header1",
-            "defaultSpan": {
-              "cols": 15,
-              "rows": 15
-            },
             "staticContent": [
               {
                 "title": "Create Supplier",

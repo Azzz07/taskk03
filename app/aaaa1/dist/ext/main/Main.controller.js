@@ -1,0 +1,1 @@
+sap.ui.define(["sap/fe/core/PageController"],function(e){"use strict";return e.extend("aaaa1.ext.main.Main",{})});

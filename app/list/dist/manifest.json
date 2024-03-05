@@ -1,0 +1,148 @@
+{
+    "_version": "1.59.0",
+    "sap.app": {
+        "id": "list",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:lrop",
+            "version": "1.12.2",
+            "toolsId": "c9e14cd1-9d7b-4096-b4a4-d5d3dd2e5cb0"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "odata/v4/ms/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "odataVersion": "4.0"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.120.4",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.ushell": {},
+                "sap.fe.templates": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "list.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "synchronizationMode": "None",
+                    "operationMode": "Server",
+                    "autoExpandSelect": true,
+                    "earlyRequests": true
+                }
+            },
+            "@i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
+            }
+        },
+        "resources": {
+            "css": []
+        },
+        "routing": {
+            "routes": [
+                {
+                    "pattern": ":?query:",
+                    "name": "LiabilityBasedOnAmount_1List",
+                    "target": "LiabilityBasedOnAmount_1List"
+                },
+                {
+                    "pattern": "LiabilityBasedOnAmount_1({key}):?query:",
+                    "name": "LiabilityBasedOnAmount_1ObjectPage",
+                    "target": "LiabilityBasedOnAmount_1ObjectPage"
+                }
+            ],
+            "targets": {
+                "LiabilityBasedOnAmount_1List": {
+                    "type": "Component",
+                    "id": "LiabilityBasedOnAmount_1List",
+                    "name": "sap.fe.templates.ListReport",
+                    "options": {
+                        "settings": {
+                            "contextPath": "/LiabilityBasedOnAmount_1",
+                            "variantManagement": "Page",
+                            "navigation": {
+                                "LiabilityBasedOnAmount_1": {
+                                    "detail": {
+                                        "route": "LiabilityBasedOnAmount_1ObjectPage"
+                                    }
+                                }
+                            },
+                            "initialLoad": "Disabled",
+                            "views": {
+                                "paths": [
+                                    {
+                                        "key": "tableView",
+                                        "annotationPath": "com.sap.vocabularies.UI.v1.SelectionPresentationVariant#tableView"
+                                    },
+                                    {
+                                        "key": "tableView1",
+                                        "annotationPath": "com.sap.vocabularies.UI.v1.SelectionPresentationVariant#tableView1"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "LiabilityBasedOnAmount_1ObjectPage": {
+                    "type": "Component",
+                    "id": "LiabilityBasedOnAmount_1ObjectPage",
+                    "name": "sap.fe.templates.ObjectPage",
+                    "options": {
+                        "settings": {
+                            "editableHeaderContent": false,
+                            "contextPath": "/LiabilityBasedOnAmount_1"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "sap.fiori": {
+        "registrationIds": [],
+        "archeType": "transactional"
+    }
+}
